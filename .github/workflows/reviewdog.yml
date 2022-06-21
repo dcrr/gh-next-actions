@@ -1,0 +1,16 @@
+name: reviewdog
+on: [pull_request]
+jobs:
+  stylelint:
+    name: runner / stylelint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: stylelint
+        uses: reviewdog/action-stylelint@v1
+        with:
+          # token para conectar a github
+          github_token: ${{secrets.token}}
+          reporter: github-pr-review # Change reporter.
+          # donde va a buscar dentro del proyecto
+          stylelint_input: 'src'
